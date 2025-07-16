@@ -7,8 +7,10 @@ type Props = {
   isAddCommentLoading: boolean;
 };
 
-
-export const NewCommentForm: React.FC<Props> = ({ onAddComment, isAddCommentLoading }) => {
+export const NewCommentForm: React.FC<Props> = ({
+  onAddComment,
+  isAddCommentLoading,
+}) => {
   type Errors = {
     name: boolean;
     email: boolean;
@@ -34,7 +36,9 @@ export const NewCommentForm: React.FC<Props> = ({ onAddComment, isAddCommentLoad
     setErrors(prev => ({ ...prev, email: false }));
   }
 
-  function handleBodyInputChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  function handleBodyInputChange(
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) {
     setBody(event.target.value);
     setErrors(prev => ({ ...prev, body: false }));
   }
@@ -54,10 +58,11 @@ export const NewCommentForm: React.FC<Props> = ({ onAddComment, isAddCommentLoad
       if (!body) {
         setErrors(prev => ({ ...prev, body: true }));
       }
+
       return;
     }
-    
-    onAddComment({ name, email, body })
+
+    onAddComment({ name, email, body });
     setBody('');
   }
 
@@ -175,7 +180,9 @@ export const NewCommentForm: React.FC<Props> = ({ onAddComment, isAddCommentLoad
         <div className="control">
           <button
             type="submit"
-            className={classNames('button', 'is-link', { 'is-loading': isAddCommentLoading })}
+            className={classNames('button', 'is-link', {
+              'is-loading': isAddCommentLoading,
+            })}
           >
             Add
           </button>
@@ -183,8 +190,8 @@ export const NewCommentForm: React.FC<Props> = ({ onAddComment, isAddCommentLoad
 
         <div className="control">
           {/* eslint-disable-next-line react/button-has-type */}
-          <button 
-            type="reset" 
+          <button
+            type="reset"
             className="button is-link is-light"
             onClick={handleClearForm}
           >

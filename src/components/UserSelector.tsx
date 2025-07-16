@@ -68,7 +68,7 @@ export const UserSelector: React.FC<Props> = ({
         className="dropdown-menu"
         id="dropdown-menu"
         role="menu"
-        style={({ display: isDropdownOpen ? 'block' : 'none' })}
+        style={{ display: isDropdownOpen ? 'block' : 'none' }}
       >
         <UsersList
           users={users}

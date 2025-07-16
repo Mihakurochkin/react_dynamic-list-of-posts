@@ -29,9 +29,11 @@ export const App = () => {
   const [isPostsError, setIsPostsError] = useState<boolean>(false);
   const [isPostsLoading, setIsPostsLoading] = useState<boolean>(false);
   const [isCommentsLoading, setIsCommentsLoading] = useState<boolean>(false);
-  const [isAddCommentLoading, setIsAddCommentLoading] = useState<boolean>(false);
+  const [isAddCommentLoading, setIsAddCommentLoading] =
+    useState<boolean>(false);
   const [isCommentsError, setIsCommentsError] = useState<boolean>(false);
-  const [isCommentFormVisible, setIsCommentFormVisible] = useState<boolean>(false);
+  const [isCommentFormVisible, setIsCommentFormVisible] =
+    useState<boolean>(false);
 
   useEffect(() => {
     getUsers().then(setUsers);
@@ -41,7 +43,7 @@ export const App = () => {
     setIsCommentFormVisible(false);
     setOpenedPostId(prevId => (prevId === postId ? null : postId));
     setComments([]);
-    setIsCommentsLoading(true)
+    setIsCommentsLoading(true);
   }
 
   function handleSelectUser(user: User | null) {
@@ -74,12 +76,12 @@ export const App = () => {
 
     try {
       const newComment = await addComment({ ...comment, postId });
+
       setComments(prevComments => [...prevComments, newComment]);
     } catch (error) {
       setIsCommentsError(true);
     } finally {
       setIsAddCommentLoading(false);
-      return !isCommentsError;
     }
   }
 
